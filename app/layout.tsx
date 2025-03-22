@@ -1,10 +1,13 @@
+import { Noto_Sans_KR } from "next/font/google";
 import type { Metadata } from "next";
 
 import "./globals.css";
 
+const notoSansKr = Noto_Sans_KR({ subsets: ["latin"] });
+
 export const metadata: Metadata = {
   title: "COBA-LOG",
-  description: "coding babo blog",
+  description: "코딩바보의 모든 기록",
 };
 
 export default function RootLayout({
@@ -13,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko">
-      <body>{children}</body>
+    <html lang="ko" className={`h-full ${notoSansKr.className}`}>
+      <body className="h-full">{children}</body>
     </html>
   );
 }
