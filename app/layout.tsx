@@ -1,7 +1,9 @@
-import { Noto_Sans_KR } from "next/font/google";
 import type { Metadata } from "next";
+import { Noto_Sans_KR } from "next/font/google";
 
 import "./globals.css";
+
+import Header from "@/app/(home)/header";
 
 const notoSansKr = Noto_Sans_KR({ subsets: ["latin"] });
 
@@ -17,7 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className={`h-full ${notoSansKr.className}`}>
-      <body className="h-full">{children}</body>
+      <body className="h-full">
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
