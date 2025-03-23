@@ -1,8 +1,3 @@
 export default function HomePage() {
-  return (
-    <>
-      <aside>this is section</aside>
-      <main>this is main</main>
-    </>
-  );
+  return <main className="p-5">this is main</main>;
 }
