@@ -27,7 +27,7 @@ const links: CustomLink[] = [
 
 export default function Header() {
   return (
-    <header className="flex flex-row items-center gap-5 px-5 py-3">
+    <header className="flex flex-row items-center gap-5 border-b-2 px-5 py-3">
       <Link href="/">
         <Image src={"/logo.png"} alt="Logo" width={50} height={50} />
       </Link>
