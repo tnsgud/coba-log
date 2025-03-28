@@ -25,8 +25,6 @@ const links: CustomLink[] = [
   },
 ];
 
-// t57LCt5AKa3hDhCR
-
 export default function Header() {
   return (
     <header className="flex flex-row items-center gap-5 border-b-2 px-5 py-3">
@@ -35,8 +33,7 @@ export default function Header() {
       </Link>
 
       <p className="flex flex-col">
-        <span className="text-2xl font-bold">COBA_LOG</span>
-        <span className="font-extralight">코딩바보의 모든 기록</span>
+        <span className="text-3xl font-extrabold">COBA_LOG</span>
       </p>
 
       <nav className="flex flex-auto justify-center gap-10">
