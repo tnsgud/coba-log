@@ -1,17 +1,20 @@
+import Link from 'next/link';
 import { Tables } from "@/database.types";
 
 interface Props {
-  post: Tables<"post">;
+  post: Pick<Tables<"post">, "id" | "title" | "description" | "views"> & {
+    category: Pick<Tables<"category">, "id" | "name" | "slug">;
+  };
 }
 
 export default function PostCard({ post }: Props) {
-  const { id, title, description, category_id } = post;
+  const { id, title, description, category } = post;
 
   return (
-    <p className="flex flex-col border-2 px-2">
+    <Link className="flex flex-col border-2 px-2" href={`/posts/${category.slug}/${id}`}>
       <span className="text-4xl font-bold">{title}</span>
       <span>{description}</span>
-      <span>{category_id}</span>
-    </p>
+      <span>{category.name}</span>
+    </Link>
   );
 }
