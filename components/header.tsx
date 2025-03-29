@@ -36,7 +36,9 @@ export default function Header() {
         <span className="text-3xl font-extrabold">COBA_LOG</span>
       </p>
 
-      <nav className="flex flex-auto justify-center gap-10">
+      <span className="ml-auto hidden max-sm:inline">test</span>
+
+      <nav className="flex flex-auto justify-center gap-10 max-sm:hidden">
         {links.map((value) => (
           <Link
             key={`home-link-${value.text}`}
