@@ -8,32 +8,32 @@ const list = [
   { name: "누적 게시물 수", thisWeekCount: 200, lastWeekCount: 190 },
 ];
 
+const imageList = [
+  {
+    src: BlogTitle,
+    alt: "blog title",
+    style: { width: "70vw", maxWidth: "700px" },
+  },
+  {
+    src: BlogDescription,
+    alt: "blog description",
+    style: { width: "50vw", maxWidth: "500px" },
+  },
+];
+
 export default function HomePage() {
   return (
     <main className="flex flex-col items-center p-5">
-      <Image
-        src={BlogTitle}
-        alt="blog title"
-        className="mb-2"
-        style={{
-          maxWidth: "700px",
-          width: "70vw",
-          height: "auto",
-        }}
-      />
+      {imageList.map((image) => (
+        <Image
+          key={`${image.alt}`}
+          src={image.src}
+          alt={`${image.alt} image`}
+          style={{ ...image.style, height: "auto" }}
+        />
+      ))}
 
-      <Image
-        src={BlogDescription}
-        alt="blog description"
-        className="mb-10"
-        style={{
-          maxWidth: "500px",
-          width: "50vw",
-          height: "auto",
-        }}
-      />
-
-      <div className="flex w-full justify-center gap-10 max-sm:flex-col">
+      <div className="mt-10 flex w-full justify-center gap-10 max-sm:flex-col">
         {list.map((i) => (
           <TotalCountCard
             key={`item-${i.name}`}
