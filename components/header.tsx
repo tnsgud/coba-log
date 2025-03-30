@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import BarIcon from "./icons/bar-icon";
+import BlogTitle from "@/public/blog_title.avif";
 
 interface CustomLink {
   href: string;
@@ -27,16 +29,14 @@ const links: CustomLink[] = [
 
 export default function Header() {
   return (
-    <header className="flex flex-row items-center gap-5 border-b-2 px-5 py-3">
+    <header className="flex flex-row items-center justify-center gap-5 border-b-2 px-5 py-3 text-center">
       <Link href="/">
         <Image src={"/logo.png"} alt="Logo" width={50} height={50} />
       </Link>
 
-      <p className="flex flex-col">
-        <span className="text-3xl font-extrabold">COBA_LOG</span>
-      </p>
+      <Image src={BlogTitle} alt="blog title" width={150} />
 
-      <span className="ml-auto hidden max-sm:inline">test</span>
+      <BarIcon className="ml-auto hidden size-8 max-sm:inline" />
 
       <nav className="flex flex-auto justify-center gap-10 max-sm:hidden">
         {links.map((value) => (
