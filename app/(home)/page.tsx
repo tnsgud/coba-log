@@ -1,12 +1,11 @@
 import Image from "next/image";
-import { Gugi } from 'next/font/google';
-import BlogTitle from '@/public/blog_title.avif';
-
-const gugi = Gugi({weight:'400', subsets:['latin']})
+import BlogTitle from "@/public/blog_title.avif";
+import BlogDescription from "@/public/blog-description.png";
+import TotalCountCard from "./components/total-count-card";
 
 const list = [
-  { name: "누적 방문자", count: 0 },
-  { name: "누적 게시물", count: 0 },
+  { name: "누적 방문자 수", thisWeekCount: 100, lastWeekCount: 1 },
+  { name: "누적 게시물 수", thisWeekCount: 200, lastWeekCount: 190 },
 ];
 
 export default function HomePage() {
@@ -15,20 +14,33 @@ export default function HomePage() {
       <Image
         src={BlogTitle}
         alt="blog title"
-        className="mb-10"
+        className="mb-2"
+        style={{
+          maxWidth: "700px",
+          width: "70vw",
+          height: "auto",
+        }}
       />
 
-      <span className={`${gugi.className} text-5xl font-thin mb-10`}>코딩바보의 모든 기록</span>
+      <Image
+        src={BlogDescription}
+        alt="blog description"
+        className="mb-10"
+        style={{
+          maxWidth: "500px",
+          width: "50vw",
+          height: "auto",
+        }}
+      />
 
-      <div className="flex flex-row justify-center gap-30">
+      <div className="flex w-full justify-center gap-10 max-sm:flex-col">
         {list.map((i) => (
-          <div
+          <TotalCountCard
             key={`item-${i.name}`}
-            className="flex flex-row gap-10 rounded-xl border-2 px-5 py-2"
-          >
-            <p className="text-2xl font-bold">{i.name}</p>
-            <p className="text-2xl">{i.count}</p>
-          </div>
+            name={i.name}
+            currentCount={i.thisWeekCount}
+            previousCount={i.lastWeekCount}
+          />
         ))}
       </div>
     </main>
