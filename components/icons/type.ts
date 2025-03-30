@@ -1,0 +1,3 @@
+interface IconDefaultProps {
+  className?: string;
+}
