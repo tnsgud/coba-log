@@ -1,4 +1,4 @@
-export default function ArrowTrendingUp({ className }: IconDefaultProps) {
+export default function ArrowTrendingUpIcon({ className }: IconDefaultProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
