@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import BarIcon from "./icons/bar-icon";
+import BarIcon from "./icons/bar";
 import BlogTitle from "@/public/blog_title.avif";
 
 interface CustomLink {
