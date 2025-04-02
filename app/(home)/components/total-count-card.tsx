@@ -1,4 +1,4 @@
-import ArrowTrendingUp from "@/components/icons/arrow-trending-up";
+import { TrendingUp } from "lucide-react";
 
 interface Props {
   name: string;
@@ -27,7 +27,7 @@ export default function TotalCountCard({
           `${compactNumberFormatter.format(currentCount)}명`}
       </span>
       <span className="col-span-2 flex flex-row items-center text-xl font-thin">
-        <ArrowTrendingUp className="mr-2 size-3 stroke-red-500 stroke-3" />
+        <TrendingUp className="mr-2 size-3 stroke-red-500 stroke-3" />
         {compactNumberFormatter.format(currentCount - previousCount)}
       </span>
     </div>

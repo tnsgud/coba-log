@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import BarIcon from "./icons/bar";
 import BlogTitle from "@/public/blog_title.avif";
+import { Menu } from "lucide-react";
 
 interface CustomLink {
   href: string;
@@ -21,10 +21,6 @@ const links: CustomLink[] = [
     href: "/profile",
     text: "PROFILE",
   },
-  {
-    href: "/products",
-    text: "PRODUCT",
-  },
 ];
 
 export default function Header() {
@@ -36,7 +32,7 @@ export default function Header() {
 
       <Image src={BlogTitle} alt="blog title" width={150} />
 
-      <BarIcon className="ml-auto hidden size-8 max-sm:inline" />
+      <Menu className="ml-auto hidden size-8 max-sm:inline" />
 
       <nav className="flex flex-auto justify-center gap-10 max-sm:hidden">
         {links.map((value) => (

@@ -1,10 +1,8 @@
 import Link from "next/link";
 import { Tables } from "@/database.types";
 import { Badge } from "@/components/ui/badge";
-import HeartIcon from "@/components/icons/heart";
-import EyeIcon from "@/components/icons/eye";
-import ChatIcon from "@/components/icons/chat";
 import dateFormatter from "@/lib/date-formatter";
+import { Eye, Heart, MessageSquareText } from "lucide-react";
 
 interface Props {
   post: Pick<
@@ -31,7 +29,7 @@ export default function PostCard({ post }: Props) {
           <span className="font-thin">{description}</span>
         </div>
         <div className="text-center">
-          <HeartIcon className="size-10 hover:cursor-pointer" isFill />
+          <Heart className="size-10 hover:cursor-pointer fill-pink-600 stroke-pink-600"  />
           <span className="font-thin">1.2K</span>
         </div>
       </div>
@@ -41,9 +39,9 @@ export default function PostCard({ post }: Props) {
 
         <div className="text-end">
           <div className="flex items-center gap-2">
-            <EyeIcon className="size-5" />
+            <Eye className="size-5" />
             10M
-            <ChatIcon className="size-5" />
+            <MessageSquareText className="size-5" />
             12K
           </div>
           {dateFormatter.format(new Date(post.created_at))}
