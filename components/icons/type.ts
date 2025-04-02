@@ -1,3 +1,0 @@
-interface IconDefaultProps {
-  className?: string;
-}
