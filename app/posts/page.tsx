@@ -14,11 +14,7 @@ export default async function PostsPage() {
   return (
     <main className="grid grid-cols-2 gap-5 p-5">
       {posts?.map((post) => <PostCard key={`post-${post.id}`} post={post} />)}
-      <Button
-        className="fixed right-4 bottom-4 z-50 size-15 hover:cursor-pointer"
-        variant="outline"
-        size="icon"
-      >
+      <Button className="fixed right-4 bottom-4 z-50 size-15 hover:cursor-pointer" asChild>
         <Link href="/write">
           <Plus className="size-6" />
         </Link>
