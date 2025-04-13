@@ -1,8 +1,8 @@
-import { getAllCategories } from "../category/actions";
-import WriteForm from "./components/write-form";
+import { getAllCategories } from '../category/actions'
+import WriteForm from './components/write-form'
 
 export default async function WritePage() {
-  const categories = await getAllCategories();
+	const categories = await getAllCategories()
 
-  return <WriteForm categories={categories}/>;
+	return <WriteForm categories={categories} />
 }

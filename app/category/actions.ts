@@ -1,9 +1,9 @@
-"use server";
+'use server'
 
-import supabase from "@/lib/supabase";
+import supabase from '@/lib/supabase'
 
 export async function getAllCategories() {
-  const { data } = await supabase.from("category").select("*");
+	const { data } = await supabase.from('category').select('*')
 
-  return data ?? [];
+	return data ?? []
 }
