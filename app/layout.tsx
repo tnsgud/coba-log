@@ -4,6 +4,7 @@ import { Noto_Sans_KR } from 'next/font/google'
 import './globals.css'
 
 import Header from '@/components/header'
+import { ThemeProvider } from '@/components/theme-provider'
 
 const notoSansKr = Noto_Sans_KR({ subsets: ['latin'] })
 
@@ -18,10 +19,21 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="ko" className={`h-full ${notoSansKr.className}`}>
+		<html
+			lang="ko"
+			className={`h-full ${notoSansKr.className}`}
+			suppressHydrationWarning
+		>
 			<body className="h-full">
-				<Header />
-				{children}
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="dark"
+					enableSystem
+					disableTransitionOnChange
+				>
+					<Header />
+					{children}
+				</ThemeProvider>
 			</body>
 		</html>
 	)
