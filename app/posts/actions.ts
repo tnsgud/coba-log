@@ -14,7 +14,5 @@ export async function insertPost({
 		category_id,
 	})
 
-	console.log(result)
-
 	return result.data
 }
