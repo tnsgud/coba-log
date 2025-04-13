@@ -13,6 +13,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import supabase from '@/lib/supabase'
+import { useRouter } from 'next/navigation'
 
 const formSchema = z.object({
 	email: z
@@ -23,6 +24,7 @@ const formSchema = z.object({
 })
 
 export default function SignInForm() {
+	const router = useRouter()
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: { email: '', password: '' },
@@ -37,18 +39,17 @@ export default function SignInForm() {
 	]
 
 	async function onSubmit({ email, password }: z.infer<typeof formSchema>) {
-		const result = await supabase.auth.signInWithPassword({ email, password })
+		const { error } = await supabase.auth.signInWithPassword({
+			email,
+			password,
+		})
 
-		if (!result.data.session) return
+		if (error) {
+			alert(error)
+			return
+		}
 
-		const result2 = await supabase.auth.setSession(result.data.session)
-
-		console.log(result)
-		console.log('result2', result2)
-
-		const user = await supabase.auth.getUser()
-
-		console.log('user', user)
+		router.push('/')
 	}
 
 	return (
