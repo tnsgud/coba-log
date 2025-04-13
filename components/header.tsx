@@ -2,9 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import BlogTitle from '@/public/blog_title.avif'
 import { Menu } from 'lucide-react'
-import { Button } from './ui/button'
+import SigninButton from './sign-in-button'
 import supabase from '@/lib/supabase'
-import { createClient } from '@/lib/supabase/server'
 
 interface CustomLink {
 	href: string
@@ -27,13 +26,6 @@ const links: CustomLink[] = [
 ]
 
 export default async function Header() {
-	const session = await supabase.auth.getSession()
-	const ssr = await createClient()
-	const session2 = await ssr.auth.getSession()
-
-	console.log(session)
-	console.log(session2)
-
 	return (
 		<header className="flex flex-row items-center justify-center gap-5 border-b-2 px-5 py-3 text-center">
 			<Link href="/">
@@ -55,12 +47,7 @@ export default async function Header() {
 					</Link>
 				))}
 			</nav>
-
-			{session && (
-				<Button variant="outline">
-					<Link href="/sign-in">Sign in</Link>
-				</Button>
-			)}
+			<SigninButton />
 		</header>
 	)
 }

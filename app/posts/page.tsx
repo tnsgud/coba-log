@@ -1,8 +1,6 @@
 import supabase from '@/lib/supabase'
 import PostCard from './components/post-card'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-import { Plus } from 'lucide-react'
+import FloatingButton from './components/floating-button'
 
 export default async function PostsPage() {
 	const { data: posts } = await supabase
@@ -16,11 +14,7 @@ export default async function PostsPage() {
 			{posts?.map((post) => (
 				<PostCard key={`post-${post.id}`} post={post} />
 			))}
-			<Button className="fixed right-4 bottom-4 z-50 size-15" asChild>
-				<Link href="/write">
-					<Plus className="size-6" />
-				</Link>
-			</Button>
+			<FloatingButton />
 		</main>
 	)
 }
