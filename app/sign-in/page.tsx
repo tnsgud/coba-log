@@ -10,6 +10,9 @@ export default function SignInPage() {
 	async function signInWithGithub() {
 		await supabase.auth.signInWithOAuth({
 			provider: 'github',
+			options: {
+				redirectTo: 'https://coba-log.vercel.app',
+			},
 		})
 	}
 
