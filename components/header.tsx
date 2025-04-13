@@ -47,7 +47,9 @@ export default function Header() {
 				))}
 			</nav>
 
-			<Button variant="outline">Sign in</Button>
+			<Button variant="outline">
+				<Link href="/sign-in">Sign in</Link>
+			</Button>
 		</header>
 	)
 }
