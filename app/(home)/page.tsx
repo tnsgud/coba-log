@@ -2,6 +2,8 @@ import Image from 'next/image'
 import BlogTitle from '@/public/blog_title.avif'
 import BlogDescription from '@/public/blog-description.png'
 import TotalCountCard from './components/total-count-card'
+import supabase from '@/lib/supabase'
+import { createClient } from '@/lib/supabase/server'
 
 const list = [
 	{ name: '누적 방문자 수', thisWeekCount: 100, lastWeekCount: 1 },
@@ -21,7 +23,14 @@ const imageList = [
 	},
 ]
 
-export default function HomePage() {
+export default async function HomePage() {
+	const session = await supabase.auth.getSession()
+	const ssr = await createClient()
+	const session2 = await ssr.auth.getSession()
+
+	console.log(session)
+	console.log(session2)
+
 	return (
 		<main className="flex flex-col items-center p-5">
 			{imageList.map((image) => (

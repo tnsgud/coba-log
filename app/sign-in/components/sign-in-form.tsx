@@ -39,7 +39,16 @@ export default function SignInForm() {
 	async function onSubmit({ email, password }: z.infer<typeof formSchema>) {
 		const result = await supabase.auth.signInWithPassword({ email, password })
 
+		if (!result.data.session) return
+
+		const result2 = await supabase.auth.setSession(result.data.session)
+
 		console.log(result)
+		console.log('result2', result2)
+
+		const user = await supabase.auth.getUser()
+
+		console.log('user', user)
 	}
 
 	return (

@@ -11,7 +11,8 @@ export default function SignInPage() {
 		await supabase.auth.signInWithOAuth({
 			provider: 'github',
 			options: {
-				redirectTo: 'https://coba-log.vercel.app/auth/callback',
+				redirectTo:
+					'https://obscure-bassoon-95gg9qw46v5c774w-3000.app.github.dev',
 			},
 		})
 	}
