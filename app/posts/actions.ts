@@ -1,4 +1,4 @@
-import { Tables } from '@/database.types'
+import type { Tables } from '@/database.types'
 import supabase from '@/lib/supabase'
 
 export async function insertPost({

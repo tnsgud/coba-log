@@ -20,7 +20,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { Tables } from '@/database.types'
+import type { Tables } from '@/database.types'
 import { insertPost } from '@/app/posts/actions'
 
 interface Props {

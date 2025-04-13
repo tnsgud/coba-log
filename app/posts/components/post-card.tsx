@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Tables } from '@/database.types'
+import type { Tables } from '@/database.types'
 import { Badge } from '@/components/ui/badge'
 import dateFormatter from '@/lib/date-formatter'
 import { Eye, Heart, MessageSquareText } from 'lucide-react'
