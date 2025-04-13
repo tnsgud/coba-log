@@ -16,10 +16,7 @@ export default async function PostsPage() {
 			{posts?.map((post) => (
 				<PostCard key={`post-${post.id}`} post={post} />
 			))}
-			<Button
-				className="fixed right-4 bottom-4 z-50 size-15 hover:cursor-pointer"
-				asChild
-			>
+			<Button className="fixed right-4 bottom-4 z-50 size-15" asChild>
 				<Link href="/write">
 					<Plus className="size-6" />
 				</Link>
