@@ -2,9 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import BlogTitle from '@/public/blog_title.avif'
 import SigninButton from './sign-in-button'
-
-const hello = 'this is test             '
-
 import { Menu } from 'lucide-react'
 
 interface CustomLink {
