@@ -1,7 +1,7 @@
 'use client'
 
 import { z } from 'zod'
-import { useForm } from 'react-hook-form'
+import { useForm, UseFormReturn, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
 	Form,
@@ -22,29 +22,35 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import type { Tables } from '@/database.types'
 import { insertPost } from '@/app/posts/actions'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import supabase from '@/lib/supabase'
+import { WriteFormData } from '../page'
+
 
 interface Props {
-	categories: Pick<Tables<'category'>, 'id' | 'name'>[]
+	form:UseFormReturn<WriteFormData>
 }
 
-const formSchema = z.object({
-	title: z.string().min(1, '제목은 필수 요소 입니다.'),
-	description: z.string().min(1, '설명은 필수 요소 입니다.'),
-	content: z.string().min(1, '내용은 필수 요소 입니다.'),
-	category: z.coerce.number().min(1, '카테고리는 필수 요소 입니다.'),
-})
+export default function WriteForm({form} : Props) {
+	const [categories, setCategories] = useState<
+		Pick<Tables<'category'>, 'id' | 'name'>[]
+	>([])
 
-export default function WriteForm({ categories }: Props) {
-	const form = useForm<z.infer<typeof formSchema>>({
-		resolver: zodResolver(formSchema),
-		defaultValues: { title: '', description: '', content: '' },
-	})
-
-	function onSubmit(value: z.infer<typeof formSchema>) {
+	function onSubmit(value: WriteFormData) {
 		const { title, description, content, category: category_id } = value
 
 		insertPost({ title, description, content, category_id })
 	}
+
+	useEffect(() => {
+		async function fetchingCategories() {
+			const { data } = await supabase.from('category').select('*')
+
+			setCategories(data ?? [])
+		}
+
+		fetchingCategories();
+	}, [])
 
 	return (
 		<Form {...form}>
