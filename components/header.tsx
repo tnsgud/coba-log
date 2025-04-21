@@ -1,9 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import BlogTitle from '@/public/blog_title.avif'
-import { Menu } from 'lucide-react'
 import SigninButton from './sign-in-button'
-import supabase from '@/lib/supabase'
+import { Menu } from 'lucide-react'
 
 interface CustomLink {
 	href: string
