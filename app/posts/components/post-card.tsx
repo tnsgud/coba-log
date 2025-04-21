@@ -40,7 +40,7 @@ export default function PostCard({ post }: Props) {
 				<div className="text-end">
 					<div className="flex items-center gap-2">
 						<Eye className="size-5" />
-						10M
+						{post.views}
 						<MessageSquareText className="size-5" />
 						12K
 					</div>
