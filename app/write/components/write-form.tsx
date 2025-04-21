@@ -25,6 +25,7 @@ import { insertPost } from '@/app/posts/actions'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import supabase from '@/lib/supabase'
 import { WriteFormData } from '../page'
+import { redirect } from 'next/navigation'
 
 
 interface Props {
@@ -36,10 +37,12 @@ export default function WriteForm({form} : Props) {
 		Pick<Tables<'category'>, 'id' | 'name'>[]
 	>([])
 
-	function onSubmit(value: WriteFormData) {
+	async function onSubmit(value: WriteFormData) {
 		const { title, description, content, category: category_id } = value
 
-		insertPost({ title, description, content, category_id })
+		const data = await insertPost({ title, description, content, category_id })
+
+		redirect(`/posts/${data.category.slug}/${data.id}`)
 	}
 
 	useEffect(() => {
